@@ -1,0 +1,42 @@
+# Environment Variables - IMPORTANT: Never commit API keys!
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+
+# C Compiled Files
+*.o
+*.out
+template_gen
+template_generator
+a.out
+
+# Output Files
+output/
+*.png
+*.jpg
+*.jpeg
+
+# Temporary Files
+*.temp.png
+*_temp.png
+temp_bg_*.png
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

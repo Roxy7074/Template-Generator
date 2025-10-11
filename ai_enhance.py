@@ -13,7 +13,7 @@ class AIEnhancer:
         self.client = OpenAI(api_key=os.getenv(
             "OPENAI_API_KEY"))
         
-    def generate_bg(self, theme, output_path, size="1080x1080"):
+    def generate_bg(self, theme, output_path, size="1024x1024"):
         prompt = f"""
         Create a stunning, high-tech abstract background for a blockchain event poster.
         
@@ -123,22 +123,22 @@ class AIEnhancer:
         Generate an advanced gradient with geometric tech elements
         """
         # make base image
-        img = Image.new('RGB', (1080, 1080))
+        img = Image.new('RGB', (1024, 1024))
         draw = ImageDraw.Draw(img)
         
         # multi color gradient
-        for y in range(1080):
-            progress = y / 1080
+        for y in range(1024):
+            progress = y / 1024
             
             # dark red to black gradient
             r = int(139 - (139 * progress * 0.7))
             g = int(0)
             b = int(0)
             
-            draw.line([(0, y), (1080, y)], fill=(r, g, b))
+            draw.line([(0, y), (1024, y)], fill=(r, g, b))
         
         # add radial gradient overlay
-        overlay = Image.new('RGBA', (1080, 1080), (0, 0, 0, 0))
+        overlay = Image.new('RGBA', (1024, 1024), (0, 0, 0, 0))
         draw_overlay = ImageDraw.Draw(overlay)
         
         center_x, center_y = 540, 540
@@ -193,9 +193,9 @@ class AIEnhancer:
                                 fill=color, outline=(255, 255, 255, 100), width=2)
         
         # add grid pattern
-        for x in range(0, 1080, 40):
+        for x in range(0, 1024, 40):
             draw_final.line([(x, 0), (x, 1080)], fill=(255, 255, 255, 15), width=1)
-        for y in range(0, 1080, 40):
+        for y in range(0, 1024, 40):
             draw_final.line([(0, y), (1080, y)], fill=(255, 255, 255, 15), width=1)
         
         # convert and save
