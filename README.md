@@ -1,6 +1,6 @@
 # Template-Generator
 AI-Powered Template Generator
-A high-performance template generator built in C with AI enhancement capabilities for creating unique, professional event posters and social media graphics. Designed specifically for Northeastern Blockchain but customizable for any organization.
+A high-performance template generator built in C with AI enhancement added in a python script with capabilities for creating unique, professional event posters and social media graphics. Designed specifically for an NEU club but customizable for any organization.
 
 Features:
 - High Performance with built in C using Cairo graphics library
