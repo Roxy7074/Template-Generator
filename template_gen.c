@@ -182,10 +182,10 @@ int main() {
     generate_aibg("Blockchain Research Event", "output/bg_temp.png");
 
     // create the template
-    Template *tg = create_temp(1080, 1080);
+    Template *tg = create_temp(1024, 1024);
 
     // load the ai generated background
-    temp_add_logo(tg, "output/bg_temp.png", 0, 0, 1080, 1080);
+    temp_add_logo(tg, "output/bg_temp.png", 0, 0, 1024, 1024);
 
     // add a slightly transparent overlay to darken bg
     cairo_set_source_rgba(tg->cr, 0, 0, 0, 0.4);
