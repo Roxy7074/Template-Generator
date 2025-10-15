@@ -165,14 +165,15 @@ class AIEnhancer:
             (255, 0, 0, 140),
         ]
         
+        # commented this out bc the top left corner will be the logo always for this club
         # top left corner
-        for i in range(3):
-            color = random.choice(colors)
-            size = random.randint(60, 150)
-            x = random.randint(0, 200)
-            y = random.randint(0, 200)
-            draw_final.rectangle([x, y, x + size, y + size], 
-                                fill=color, outline=(255, 255, 255, 100), width=2)
+        # for i in range(3):
+        #    color = random.choice(colors)
+        #    size = random.randint(60, 150)
+        #    x = random.randint(0, 200)
+        #    y = random.randint(0, 200)
+        #    draw_final.rectangle([x, y, x + size, y + size], 
+        #                        fill=color, outline=(255, 255, 255, 100), width=2)
         
         # top right corner
         for i in range(3):
@@ -183,7 +184,7 @@ class AIEnhancer:
             draw_final.rectangle([x, y, x + size, y + size], 
                                 fill=color, outline=(255, 255, 255, 100), width=2)
         
-        # bottom corners
+        # bottom left corner
         for i in range(3):
             color = random.choice(colors)
             size = random.randint(60, 150)
@@ -191,6 +192,15 @@ class AIEnhancer:
             y = random.randint(880, 1020)
             draw_final.rectangle([x, y, x + size, y + size], 
                                 fill=color, outline=(255, 255, 255, 100), width=2)
+            
+        # bottom right corner
+        for i in range(3):
+            color = random.choice(colors)
+            size = random.randint(60, 150)
+            x = random.randint(880, 1020)
+            y = random.randint(880, 1020)
+            draw_final.rectangle([x, y, x + size, y + size],
+                                 fill=color, outline=(225, 255, 255, 100), width=2)
         
         # add grid pattern
         for x in range(0, 1024, 40):
