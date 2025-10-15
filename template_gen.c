@@ -1,6 +1,9 @@
 #include <stdio.h> 
 #include <stdlib.h>
-#include <cairo.h> 
+#include <cairo.h>
+
+// THIS IS THE C VERSION OF THE TEMPLATE GENERATOR, WORKING VERSION FOR THE PROGRAM
+// IS IN PYTHON, THIS IS JUST TO SHOW THE C IMPLEMENTATION
 
 typedef struct {
     int width;
@@ -82,7 +85,7 @@ void temp_add_text(Template *tg, char *text, int x, int y) {
     CAIRO_FONT_WEIGHT_BOLD);
 
     // font size
-    cairo_set_font_size(tg->cr, 40.0);
+    cairo_set_font_size(tg->cr, 30.0);
 
     // font color which is gonna be white
     cairo_set_source_rgb(tg->cr, 1.0, 1.0, 1.0);
@@ -192,14 +195,14 @@ int main() {
     cairo_paint(tg->cr);
 
     // add logo
-    temp_add_logo(tg, "Logo Design.png", 80, 60, 180, 180);
+    temp_add_logo(tg, "Logo Design.png", 30, 30, 130, 130);
 
     // add text
-    temp_add_text(tg, "Northeastern Blockchain", 290, 150);
+    temp_add_text(tg, "Northeastern Blockchain", 100, 130);
 
     // add title
     cairo_set_font_size(tg->cr, 70);
-    temp_add_text(tg, "Research Event", 80, 450);
+    temp_add_text(tg, "Speaker Event", 70, 200);
 
     // save the template to a file
     save_temp(tg, "output_template.png");
