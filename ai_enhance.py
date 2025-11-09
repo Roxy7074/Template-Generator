@@ -15,25 +15,27 @@ class AIEnhancer:
         
     def generate_bg(self, theme, output_path, size="1024x1024"):
         prompt = f"""
-        Create a stunning, high-tech abstract background for a blockchain event poster.
+        I want to create a high-quality background image for my Blockchain Club event poster.
+        Please follow the instructions below on how I need you to do this.
         
         THEME: {theme}
         
-        STYLE REQUIREMENTS:
+        FOLLOW THESE STYLE REQUIREMENTS:
         - Dark color scheme with deep reds, blacks, and crimson tones
-        - Abstract tech aesthetic with blockchain network patterns
-        - Geometric shapes: hexagons, nodes, connection lines, circuits
-        - Glowing neon red accents and highlights
-        - Digital, futuristic, cyberpunk-inspired atmosphere
-        - Depth and layers with gradient effects
-        - Professional and modern design
+        - You may add in a abstract technology aesthetic with lines or waves
+        - Include Geometric shapes in the image like: hexagons, nodes, connection lines, circuits
+        - Also, for the texts or shapes, add glowing neon red accents and highlights
+        - For the overall atmosphere of the post, make it have a 
+          digital, futuristic, and cyberpunk-inspired vibe
+        - Add in gradient effects
+        - Keep the design professional and modern, but make it visually attractive
         
         TECHNICAL SPECS:
-        - Pure background only - NO text, logos, or characters
-        - Suitable for overlaying white text
-        - Darker in center, more vibrant at edges
-        - High contrast areas for text placement
-        - Abstract geometric patterns in corners
+        - For the base background, make it a pure background only - NO text, logos, or characters
+        - Make the background suitable for overlaying white text
+        - Keep it darker in the center and more vibrant at the edges
+        - Make some of the areas high in contrast for text placement
+        - Add in the geometric shapes and blocks in the corners of the image
         
         MOOD: Innovative, cutting-edge, professional, energetic, tech-forward
         """
@@ -63,7 +65,8 @@ class AIEnhancer:
         
     def add_graphics(self, input_path, output_path):
         """ 
-        Add random red geometric blocks and tech elements to corners or where there is free space
+        Add 3D Block Shapes in the image, specifically the edges or corners to support the club theme, 
+        again keep them shades of red.
         """
         img = Image.open(input_path).convert('RGBA')
         width, height = img.size
@@ -71,7 +74,7 @@ class AIEnhancer:
         overlay = Image.new('RGBA', (width, height), (0, 0, 0, 0))
         draw = ImageDraw.Draw(overlay)
 
-        # colors are crimson, dark red, red, firebrick, orange red
+        # crimson, dark red, red, firebrick, orange red
         colors = [(220, 20, 60, 180), (139, 0, 0, 160),
                   (255, 0, 0, 140), (178, 34, 34, 170),
                   (255, 69, 0, 150),]
@@ -81,7 +84,7 @@ class AIEnhancer:
         for _ in range(num_blocks):
             color = random.choice(colors)
             
-            # random corner selection
+            # select a random corner 
             corner = random.choice(['top_left', 'top_right', 'bottom_left', 'bottom_right'])
             
             # block size
@@ -94,15 +97,13 @@ class AIEnhancer:
                 x, y = random.randint(width - 250, width - 80), random.randint(0, 150)
             elif corner == 'bottom_left':
                 x, y = random.randint(0, 150), random.randint(height - 250, height - 80)
-            else:  # bottom_right
+            else: 
                 x, y = random.randint(width - 250, width - 80), random.randint(height - 250, height - 80)
             
-            # draw geometric shape which is either a square/rectangle
+            # either draw filled rect or outlined square
             if random.random() > 0.5:
-                # rect
                 draw.rectangle([x, y, x + block_w, y + block_h], fill=color)
             else:
-                # square
                 draw.rectangle([x, y, x + block_w, y + block_h], 
                              outline=color, width=random.randint(3, 8))
         
@@ -120,24 +121,21 @@ class AIEnhancer:
     
     def generate_advanced_gradient(self, output_path):
         """
-        Generate an advanced gradient with geometric tech elements
+        Generate an advanced gradient for the background.
         """
-        # make base image
+
         img = Image.new('RGB', (1024, 1024))
         draw = ImageDraw.Draw(img)
-        
-        # multi color gradient
+    
         for y in range(1024):
             progress = y / 1024
-            
-            # dark red to black gradient
             r = int(139 - (139 * progress * 0.7))
             g = int(0)
             b = int(0)
             
             draw.line([(0, y), (1024, y)], fill=(r, g, b))
         
-        # add radial gradient overlay
+        # adding gradient overlay
         overlay = Image.new('RGBA', (1024, 1024), (0, 0, 0, 0))
         draw_overlay = ImageDraw.Draw(overlay)
         
@@ -150,30 +148,19 @@ class AIEnhancer:
             draw_overlay.ellipse([center_x - radius, center_y - radius,
                                  center_x + radius, center_y + radius],
                                 fill=color)
-        
-        # composite
+    
         img = img.convert('RGBA')
         img = Image.alpha_composite(img, overlay)
         
         # add geometric blocks
         draw_final = ImageDraw.Draw(img)
         
-        # corner decorations
+        # corner decor
         colors = [
             (220, 20, 60, 180),
             (139, 0, 0, 160),
             (255, 0, 0, 140),
         ]
-        
-        # commented this out bc the top left corner will be the logo always for this club
-        # top left corner
-        # for i in range(3):
-        #    color = random.choice(colors)
-        #    size = random.randint(60, 150)
-        #    x = random.randint(0, 200)
-        #    y = random.randint(0, 200)
-        #    draw_final.rectangle([x, y, x + size, y + size], 
-        #                        fill=color, outline=(255, 255, 255, 100), width=2)
         
         # top right corner
         for i in range(3):
